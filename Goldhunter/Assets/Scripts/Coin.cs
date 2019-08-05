@@ -10,7 +10,7 @@ public class Coin : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        transform.Rotate(transform.up, Random.Range(0f, 360f));
         StartCoroutine(Spin());
         
 
