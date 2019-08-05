@@ -21,8 +21,9 @@ public class Coin : MonoBehaviour
     {
         startingY = transform.position.y;
         transform.Rotate(transform.up, Random.Range(0f, 360f));
+
         StartCoroutine(Spin());
-        
+        StartCoroutine(Float());
 
     }
 
@@ -36,5 +37,28 @@ public class Coin : MonoBehaviour
 
         }
     }
-    
+
+    private IEnumerator Float()
+    {
+        while (true)
+        {
+            float newY = transform.position.y + (isMovingUp ? 1 : -1) * 2 * movementDistance * floatSpeed * Time.deltaTime;
+
+            if (newY > startingY + movementDistance)
+            {
+                newY = startingY + movementDistance;
+                isMovingUp = false;
+            }
+            else if (newY < startingY)
+            {
+                newY = startingY;
+                isMovingUp = true;
+            }
+
+            transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+            yield return 0;
+        }
+    }
+
+
 }
