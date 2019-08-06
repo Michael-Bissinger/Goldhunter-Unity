@@ -27,7 +27,11 @@ public class Coin : MonoBehaviour
 
     }
 
-    
+    private void Update()
+    {
+        Spin();
+        Float();
+    }
 
     private void Spin()
     {
