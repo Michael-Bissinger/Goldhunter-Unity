@@ -22,26 +22,24 @@ public class Coin : MonoBehaviour
         startingY = transform.position.y;
         transform.Rotate(transform.up, Random.Range(0f, 360f));
 
-        StartCoroutine(Spin());
-        StartCoroutine(Float());
+        // StartCoroutine(Spin());
+        // StartCoroutine(Float());
 
     }
 
-    private IEnumerator Spin()
+    
+
+    private void Spin()
     {
-        while (true)
-        {
 
             transform.Rotate(transform.up, 360 * rotateSpeed * Time.deltaTime);
-            yield return 0;
+            //yield return 0;
 
-        }
     }
 
-    private IEnumerator Float()
+    private void Float()
     {
-        while (true)
-        {
+
             float newY = transform.position.y + (isMovingUp ? 1 : -1) * 2 * movementDistance * floatSpeed * Time.deltaTime;
 
             if (newY > startingY + movementDistance)
@@ -56,8 +54,8 @@ public class Coin : MonoBehaviour
             }
 
             transform.position = new Vector3(transform.position.x, newY, transform.position.z);
-            yield return 0;
-        }
+            //yield return 0;
+        
     }
 
 
