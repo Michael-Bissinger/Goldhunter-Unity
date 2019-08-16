@@ -18,12 +18,18 @@ public class GameManager : Singleton<GameManager>
     // Start is called before the first frame update
     void Start()
     {
-        
+        TimeRemaining = maxTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        TimeRemaining -= TimeRemaining.deltaTime;
+
+        if (TimeRemaining <= 0)
+        {
+            Application.LoadLevel(Application.loadedLevel);
+            TimeRemaining = maxTime;
+        }
     }
 }
